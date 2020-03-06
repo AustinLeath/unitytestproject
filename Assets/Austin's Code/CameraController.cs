@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +17,11 @@ public class CameraController : MonoBehaviour
     {
         //making basic, forward, backward, left and right movement
         if(Input.GetKey("w")) {
-          transform.position += Vector3.forward * Time.deltaTime * 10;
+          if(Input.GetKey(KeyCode.LeftShift)) {
+            transform.position += Vector3.forward * Time.deltaTime * 20;
+          } else {
+            transform.position += Vector3.forward * Time.deltaTime * 10;
+          }
         }
         if(Input.GetKey("a")) {
           transform.position += Vector3.left * Time.deltaTime * 10;
@@ -29,10 +35,10 @@ public class CameraController : MonoBehaviour
 
         //making Q and E do rotation left and right
         if(Input.GetKey("q")) {
-          transform.position += Vector3.forward * Time.deltaTime;
+          transform.Rotate(0, -Time.deltaTime * 100,0, Space.Self);
         }
         if(Input.GetKey("e")) {
-          transform.position += Vector3.forward * Time.deltaTime;
+          transform.Rotate(0, Time.deltaTime * 100,0, Space.Self);
         }
 
     }
